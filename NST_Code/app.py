@@ -9,10 +9,9 @@ from wtforms.validators import InputRequired
 from PIL import Image
 from torchvision import transforms
 import io
-
 # Import your existing AdaIN code
-from utils.models import VGGEncoder, Decoder
-from utils.utils import adaptive_instance_normalization, calc_mean_std
+from .utils.models import VGGEncoder, Decoder
+from .utils.utils import adaptive_instance_normalization, calc_mean_std
 
 
 app = Flask(__name__)
