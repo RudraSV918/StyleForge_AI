@@ -1,4 +1,5 @@
 import os
+import sys
 import torch
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from flask_wtf import FlaskForm
@@ -9,11 +10,16 @@ from wtforms.validators import InputRequired
 from PIL import Image
 from torchvision import transforms
 import io
+
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 # Import your existing AdaIN code
 from NST_Code.utils.models import VGGEncoder, Decoder
 from NST_Code.utils.utils import adaptive_instance_normalization, calc_mean_std
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR, 'static', 'uploads')

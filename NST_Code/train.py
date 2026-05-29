@@ -1,8 +1,16 @@
 import argparse
+import os
+import sys
 import torch
 from torch.utils.data import DataLoader
 import torch.optim as optim
 from pathlib import Path
+
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 from NST_Code.utils.utils import *
 from NST_Code.utils.models import *
 from tqdm import tqdm
